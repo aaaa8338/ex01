@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="MemberDAO">
+	<typeAlias alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias alias="MemberVO" type="egovframework.example.sample.service.MemberVO"/>
+	
+	<resultMap id="member" class="egovframework.example.sample.service.MemberVO">
+		<result property="name" column="name"/>
+		<result property="id" column="id"/>
+		<result property="password" column="password"/>
+	</resultMap> 
+	
+	<select id="MemberDAO.selectMember" resultClass="egovMap">
+		select * from member 
+	</select>
+	
+	<insert id="MemberDAO.insertMember">
+		insert into member(name, id, password) values(#name#, #id#, #password#)
+	</insert>
+
+	<select id="MemberDAO.idCheck" resultClass="int">
+		select count(*) from member where id = #id#
+	</select>
+	  
+	<select id="MemberDAO.loginCheck" resultClass="int">
+		select count(*) from member where id = #id# and password = #password# 		
+	</select> 
+	
+	
+</sqlMap>

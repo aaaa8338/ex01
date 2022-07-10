@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.example.sample.service.impl.SampleMapper">
+	<!-- <insert id="insertMember" parameterType="MemberVO">
+		insert into member(name, id, pwd) VALUES(#{name}, #{id}, #{pwd});
+	</insert> -->
+	
+	<!-- <select id="idCheck" >
+		select count(*) from member where id = #{id};
+	</select>
+	
+	<select id="loginCheck" >
+		select count(*) from member where id = #{id} and password = #{password};
+	</select>  -->
+	
+</mapper>
