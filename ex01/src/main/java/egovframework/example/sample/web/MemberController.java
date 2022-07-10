@@ -81,9 +81,9 @@ public class MemberController {
 	 */
 	@RequestMapping("loginCheck.do")
 	@ResponseBody
-	public String loginCheck (@ModelAttribute MemberVO vo) throws Exception {
-//		boolean result = memberService.loginCheck(vo.getId(), vo.getPwd()); 
-		
-		return "/";
+	public boolean loginCheck (@ModelAttribute MemberVO vo) throws Exception {
+		boolean result = memberService.loginCheck(vo.getId(), vo.getPassword()); 
+		System.out.println(result);
+		return result;
 	}
 }
