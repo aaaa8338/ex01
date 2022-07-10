@@ -23,7 +23,7 @@
 			return;
 		}
 		
-		
+		var obj= {};
 		var param = {};
 		param.id = document.frm.id.value;
 		param.password = document.frm.password.value;
@@ -31,11 +31,16 @@
 		$.ajax({
 		    type: "post",
 		    url: "${path}/loginCheck.do",
+		    //contentType: "application/json; charset=utf-8",
 		    data: param,
+		    //dataType: "json",
+		    //async: false,
 		    success: function (res) {
-		    	if (res) {
+		    	console.log(JSON.stringify(res));
+		    	obj = JSON.parse(res);
+		    	if (obj.result) {
 		    		alert("로그인 성공");
-		    		location.href = "${path}/list.do";
+		    		location.href = "${path}/memberList.do";
 		    		
 		    	} else {
 		    		alert("로그인 실패");
@@ -43,7 +48,7 @@
 		    	}
 		    	
 	       	}, error : function () {
-	       		alert("로그인 실패");
+	       		alert("에러");
 			}
 		});	
 		

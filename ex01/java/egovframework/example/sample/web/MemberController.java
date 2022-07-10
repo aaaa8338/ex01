@@ -5,12 +5,13 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.ibatis.annotations.Param;
+import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,6 +23,8 @@ public class MemberController {
 	
 	@Resource
 	private MemberService memberService;
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(MemberController.class);
 	
 	/**
 	 * 회원가입 페이지로 이동
@@ -81,9 +84,15 @@ public class MemberController {
 	 */
 	@RequestMapping("loginCheck.do")
 	@ResponseBody
-	public boolean loginCheck (@ModelAttribute MemberVO vo) throws Exception {
-		boolean result = memberService.loginCheck(vo.getId(), vo.getPassword()); 
-		System.out.println(result);
-		return result;
+	public String loginCheck (@ModelAttribute MemberVO vo) throws Exception {
+		boolean result = memberService.loginCheck(vo.getId(), vo.getPassword());
+		
+		JSONObject json = new JSONObject();
+		json.put("result", result);
+		LOGGER.info(vo.getId());
+		LOGGER.info(json.toString());
+		LOGGER.debug(json.toJSONString());
+		
+		return json.toJSONString();
 	}
 }

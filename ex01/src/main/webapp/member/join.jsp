@@ -75,7 +75,7 @@
 			   , url : "${path}/insertMember.do"
 			   , data : param  // $("#frm").serialize()
 			   , success : function(res) {
-				 	console.log(JSON.stringify(res));
+					console.log(res);
 				 	
 					if (res != "") {
 			    		alert("성공");
