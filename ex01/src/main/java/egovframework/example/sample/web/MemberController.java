@@ -84,7 +84,6 @@ public class MemberController {
 	public String loginCheck (@ModelAttribute MemberVO vo) throws Exception {
 //		boolean result = memberService.loginCheck(vo.getId(), vo.getPwd()); 
 		
-		
 		return "/";
 	}
 }
