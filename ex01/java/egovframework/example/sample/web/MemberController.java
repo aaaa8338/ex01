@@ -87,12 +87,12 @@ public class MemberController {
 	public String loginCheck (@ModelAttribute MemberVO vo) throws Exception {
 		boolean result = memberService.loginCheck(vo.getId(), vo.getPassword());
 		
+		LOGGER.debug(vo.getId());
+		
 		JSONObject json = new JSONObject();
 		json.put("result", result);
-		LOGGER.info(vo.getId());
 		LOGGER.info(json.toString());
-		LOGGER.debug(json.toJSONString());
 		
-		return json.toJSONString();
+		return json.toString();
 	}
 }

@@ -15,30 +15,29 @@
 		if (document.frm.id.value.trim() == "") {
 			alert('아이디를 입력하세요');
 			frm.userid.focus();
-			return;
-			
-		} else if (document.frm.password.value.trim() == ""){
+			return;	
+		} 
+		
+		if (document.frm.password.value.trim() == ""){
 			alert('비밀번호를 입력하세요');
 			frm.userpwd.focus();
 			return;
 		}
 		
-		var obj= {};
 		var param = {};
 		param.id = document.frm.id.value;
 		param.password = document.frm.password.value;
-		/* location.href */
+		
 		$.ajax({
 		    type: "post",
 		    url: "${path}/loginCheck.do",
-		    //contentType: "application/json; charset=utf-8",
 		    data: param,
-		    //dataType: "json",
+		    //contentType : "application/json; charset=utf-8",
+		    dataType: "json",
 		    //async: false,
 		    success: function (res) {
 		    	console.log(JSON.stringify(res));
-		    	obj = JSON.parse(res);
-		    	if (obj.result) {
+		    	if (res.result) {
 		    		alert("로그인 성공");
 		    		location.href = "${path}/memberList.do";
 		    		

@@ -56,14 +56,13 @@ public class MemberDAO extends EgovAbstractDAO{
 	Boolean loginCheck(String id, String password) throws Exception {
 		boolean result = false;
 				
-		// 전달할 값이 2개 이상인 경우 VO 또는 맵으로 전달
-		Map<Object,String> map = new HashMap<>();
+		// 파라미터 값이 2개 이상인 경우 VO 또는 맵으로 전달
+		Map<String,Object> map = new HashMap<>();
 		
 		map.put("id", id);
 		map.put("password", password);
 		
 		int count = (int)select("MemberDAO.loginCheck", map);
-		//레코드가 1개이면 true, 0개이면 false (리턴)
 		if (count == 1) result = true;
 		
 		return result;

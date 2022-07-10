@@ -35,6 +35,8 @@
 </head>
 <body>
 	<div>
+	</div>
+	<form id="frm" name="frm">
 		<input type="button" id="btn" value="조회" class="btn" onclick="search()">
 		<label for="gender">성별</label> 
 		<select id="gender" name="gender">
@@ -42,8 +44,6 @@
 			<option value ="1">1. 남자</option>
 			<option value ="2">2. 여자</option>
 		</select> 
-	</div>
-	<form id="frm" name="frm">
 		<c:choose>
 			<c:when test="${fn:length(list) > 0}">
 				<table class="tab">
