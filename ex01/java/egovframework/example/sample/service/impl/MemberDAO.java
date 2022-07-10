@@ -19,7 +19,6 @@ public class MemberDAO extends EgovAbstractDAO{
 	 * @return 회원 목록
 	 * @exception Exception
 	 */
-	@SuppressWarnings("unchecked")
 	List<Map <String, Object>> selectMember(Map <String, Object> map) throws Exception {
 		return (List<Map<String, Object>>) list("MemberDAO.selectMember", map);
 	}
